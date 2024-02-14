@@ -18,7 +18,7 @@ def get_album(url:str,
     
     doc            = bs4.BeautifulSoup(urlopen(url).read().decode(),features='html.parser')
     page_content   = doc         .find(id='rightColumn').find(id='pageContent')
-    album_title    = page_content.find('h2').find(text=True,recursive=False)
+    album_title    = page_content.find('h2').find(string=True,recursive=False)
     album_dir      = os.path.join(dir,album_title)
     os.makedirs(album_dir,exist_ok=True)
     for i,album_picture_link in enumerate(div.find('a')['href'] for div in page_content.find_all(attrs={'class':'albumImage'})):
