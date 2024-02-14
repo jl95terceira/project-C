@@ -40,10 +40,11 @@ def get_album(url:str,
         track        = song_iter().find('a')
         track_name   = track.text
         track_link   = track['href']
-        song_page    = bs4.BeautifulSoup(urlopen('https://downloads.khinsider.com'+track_link).read().decode(),features='html.parser')
+        song_page    = bs4.BeautifulSoup(urlopen(re.match(pattern='https://[A-Za-z0-9.]+?.com',string=url).group(0)+track_link).read().decode(),features='html.parser')
         song_content = song_page.find(id='rightColumn').find(id='pageContent')
         song_link    = song_content.find(attrs={'class':'songDownloadLink'}).parent['href']
         song_name    = os.path.join(album_dir,descape(urltail(song_link)))
+        print(song_name)
         if os.path.exists(song_name): continue
         with open(song_name, 'wb') as f: 
             
