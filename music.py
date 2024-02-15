@@ -37,12 +37,11 @@ def get_album(url:str,
 
         if 'id' in song.attrs and song['id'] in {'songlist_header',
                                                  'songlist_footer',}: continue
-        song_iter = lambda _iter=iter(song.find_all('td')): next(_iter)
-        song_iter()
-        cd_number    = song_iter().text
-        track_number = song_iter().text
-        track        = song_iter().find('a')
-        track_name   = track.text
+        step = lambda _iter=iter(song.find_all('td')): next(_iter)
+        step() # play button
+        step() # CD number
+        step() # track number
+        track        = step().find('a')
         track_link   = track['href']
         song_page    = bs4.BeautifulSoup(urlopen(re.match(pattern='https://[A-Za-z0-9.]+?.com',string=url).group(0)+track_link).read().decode(),features='html.parser')
         song_content = song_page.find(id='rightColumn').find(id='pageContent')
