@@ -3,22 +3,17 @@ import os.path
 import re
 import xml.etree.ElementTree as et
 from   urllib.request import urlopen as urlopen
+import urllib.parse
 import bs4
 
-def patch_path(p:str):
+def patch_path(p  :str): return re.sub(pattern=r'[<>\:"/\\\|\?*]',repl='_',string=p)
 
-    return re.sub(pattern=r'[<>\:"/\\\|\?*]',repl='_',string=p)
+def descape   (s  :str): return urllib.parse.unquote(s)
 
-def descape(s:str):
+def urltail   (url:str): return url.split('/')[-1]
 
-    return re.sub(pattern='%([0-9]{2})',repl=lambda m: eval(f'\'\\x{m.group(1)}\''),string=s)
-
-def urltail(url:str):
-
-    return url.split('/')[-1]
-
-def get_album(url:str,
-              dir:str):
+def get_album (url:str,
+               dir:str):
     
     doc            = bs4.BeautifulSoup(urlopen(url).read().decode(),features='html.parser')
     page_content   = doc         .find(id='rightColumn').find(id='pageContent')
