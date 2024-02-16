@@ -8,8 +8,6 @@ import bs4
 
 def patch_path(p  :str): return re.sub(pattern=r'[<>\:"/\\\|\?*]',repl='_',string=p)
 
-def descape   (s  :str): return urllib.parse.unquote(s)
-
 def urltail   (url:str): return url.split('/')[-1]
 
 def get_album (url:str,
@@ -22,7 +20,7 @@ def get_album (url:str,
     os.makedirs(album_dir,exist_ok=True)
     for i,album_picture_link in enumerate(div.find('a')['href'] for div in page_content.find_all(attrs={'class':'albumImage'})):
 
-        album_picture_name = os.path.join(album_dir, descape(urltail(album_picture_link)))
+        album_picture_name = os.path.join(album_dir, urllib.parse.unquote(urltail(album_picture_link)))
         if os.path.exists(album_picture_name): continue
         with open(album_picture_name, 'wb') as f:
 
@@ -41,7 +39,7 @@ def get_album (url:str,
         song_page    = bs4.BeautifulSoup(urlopen(re.match(pattern='https://[A-Za-z0-9.]+?.com',string=url).group(0)+track_link).read().decode(),features='html.parser')
         song_content = song_page.find(id='rightColumn').find(id='pageContent')
         song_link    = song_content.find(attrs={'class':'songDownloadLink'}).parent['href']
-        song_name    = os.path.join(album_dir,patch_path(descape(urltail(song_link))))
+        song_name    = os.path.join(album_dir,patch_path(urllib.parse.unquote(urltail(song_link))))
         print(song_name)
         if os.path.exists(song_name): continue
         with open(song_name, 'wb') as f: 
