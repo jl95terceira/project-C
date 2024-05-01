@@ -1,18 +1,46 @@
-Video game music webscraper
+Video game music webscraper / downloader
 
 # Get started
-Tools to run this script:
+
+Install:
 <ul>
-  <li>Python 3 - any more recent version with <code>typing</code></li>
+  <li>Python ≥ <b>3.12</b>
   <li>Python package <code>beautifulsoup4</code>, installed via <code>pip install beautifulsoup4</code></li>
 </ul>
 
-The script is run like a Python script i.e.
 
-<code>python music.py ...</code>
+To run <code>music.py</code>, call
 
-Arguments (positional):
-<ol>
-  <li>album URL</li>
-  <li>name of home directory for the album(s) (inside which directories corresponding to the albums proper will be made)</li>
-</ol>
+```
+python music.py ...
+```
+
+or, if you set <code>.py</code> files to open with Python by default, simply call
+
+```
+music.py ...
+```
+
+The script takes positional and optional arguments. For help, call the script with option <code>-h</code> like so.
+
+```
+music.py -h
+```
+
+Help text:
+
+```
+usage: music.py [-h] [--dir DIR] url
+
+Download music from https://downloads.khinsider.com/
+
+Please, do NOT abuse this tool to mass-download content from the site. Be kind.
+
+positional arguments:
+  url         URL of the album to download
+
+options:
+  -h, --help  show this help message and exit
+  --dir DIR   directory to which to download the album
+              Defaults to C:\Users\jl95\Music\Video Game Music.
+```
