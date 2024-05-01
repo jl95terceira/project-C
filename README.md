@@ -26,21 +26,3 @@ The script takes positional and optional arguments. For help, call the script wi
 ```
 music.py -h
 ```
-
-Help text:
-
-```
-usage: music.py [-h] [--dir DIR] url
-
-Download music from https://downloads.khinsider.com/
-
-Please, do NOT abuse this tool to mass-download content from the site. Be kind.
-
-positional arguments:
-  url         URL of the album to download
-
-options:
-  -h, --help  show this help message and exit
-  --dir DIR   directory to which to download the album
-              Defaults to C:\Users\jl95\Music\Video Game Music.
-```
