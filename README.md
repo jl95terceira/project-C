@@ -21,8 +21,14 @@ or, if you set <code>.py</code> files to open with Python by default, simply cal
 music.py ...
 ```
 
+of, even better, if also you add `.PY` to environment variable PATHEXT (Windows only), call
+
+```
+music ...
+```
+
 The script takes positional and optional arguments. For help, call the script with option <code>-h</code> like so.
 
 ```
-music.py -h
+music -h
 ```
