@@ -9,26 +9,26 @@ Install:
 </ul>
 
 
-To run <code>music.py</code>, call
+To run, call
 
 ```
-python music.py ...
+python vgmusic.py ...
 ```
 
 or, if you set <code>.py</code> files to open with Python by default, simply call
 
 ```
-music.py ...
+vgmusic.py ...
 ```
 
 of, even better, if also you add `.PY` to environment variable PATHEXT (Windows only), call
 
 ```
-music ...
+vgmusic ...
 ```
 
 The script takes positional and optional arguments. For help, call the script with option <code>-h</code> like so.
 
 ```
-music -h
+vgmusic -h
 ```
