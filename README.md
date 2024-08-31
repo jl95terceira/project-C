@@ -21,7 +21,7 @@ or, if you set <code>.py</code> files to open with Python by default, simply cal
 vgmusic.py ...
 ```
 
-of, even better, if also you add `.PY` to environment variable PATHEXT (Windows only), call
+or, even better, if also you add `.PY` to environment variable PATHEXT (Windows only), call
 
 ```
 vgmusic ...
